@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/libs/account/account.iml" filepath="$PROJECT_DIR$/libs/account/account.iml" />
+      <module fileurl="file://$PROJECT_DIR$/africastalking-java-develop.iml" filepath="$PROJECT_DIR$/africastalking-java-develop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libs/airtime/airtime.iml" filepath="$PROJECT_DIR$/libs/airtime/airtime.iml" />
+      <module fileurl="file://$PROJECT_DIR$/example/android/android.iml" filepath="$PROJECT_DIR$/example/android/android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libs/common/common.iml" filepath="$PROJECT_DIR$/libs/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libs/core/core.iml" filepath="$PROJECT_DIR$/libs/core/core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/example/example.iml" filepath="$PROJECT_DIR$/example/example.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libs/payments/payments.iml" filepath="$PROJECT_DIR$/libs/payments/payments.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libs/sms/sms.iml" filepath="$PROJECT_DIR$/libs/sms/sms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libs/ussd/ussd.iml" filepath="$PROJECT_DIR$/libs/ussd/ussd.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libs/voice/voice.iml" filepath="$PROJECT_DIR$/libs/voice/voice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/example/web/web.iml" filepath="$PROJECT_DIR$/example/web/web.iml" />
+    </modules>
+  </component>
+</project>

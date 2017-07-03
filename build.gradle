@@ -1,0 +1,89 @@
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+buildscript {
+	repositories {
+	    jcenter()
+	}
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.4'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+    }
+}
+
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+
+
+Set<String> publishedLibs = new HashSet<String>()
+publishedLibs << 'sms'
+publishedLibs << 'payments'
+publishedLibs << 'airtime'
+publishedLibs << 'voice'
+publishedLibs << 'ussd'
+publishedLibs << 'account'
+publishedLibs << 'core'
+configure(subprojects.findAll {publishedLibs.contains(it.name)}){
+    group properties.getProperty("bintray.groupId")
+    version "1.1.1"
+
+    apply plugin: 'java'
+    apply plugin: "maven-publish"
+    apply plugin: 'com.jfrog.bintray'
+    apply plugin: 'com.github.johnrengelman.shadow'
+
+    targetCompatibility = 1.7
+    sourceCompatibility = 1.7
+
+
+    jar {
+        manifest {
+            attributes 'Implementation-Title': 'Africa\'s Talking SDK',
+                    'Implementation-Version': version
+        }
+    }
+
+    shadowJar {
+        classifier = null // Avoid classifiers for now...
+    }
+
+    publishing {
+        publications {
+            SDK(MavenPublication) {
+                artifact shadowJar
+                groupId properties.getProperty("bintray.groupId")
+                artifactId project.name
+                version project.version
+            }
+        }
+    }
+
+    bintray {
+        dryRun = false
+        publish = false
+        user = properties.getProperty("bintray.user")
+        key = properties.getProperty("bintray.key")
+        publications = ['SDK']
+        pkg {
+            repo = properties.getProperty("bintray.repo")
+            name = properties.getProperty("bintray.package")
+            userOrg = properties.getProperty("bintray.organization")
+            vcsUrl = properties.getProperty("bintray.vcsUrl")
+            licenses = ['Apache-2.0']
+            version {
+                name = project.version
+                desc = 'Africa\'s Talking SDK'
+                released  = new Date()
+                attributes = ['maturity': 'Development']
+            }
+        }
+    }
+
+}
+

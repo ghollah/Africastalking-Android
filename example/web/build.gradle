@@ -1,0 +1,32 @@
+group 'com.africastalking.example'
+version '1.0.0'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    jcenter()
+    maven {
+        url  "http://devaksal.bintray.com/AT"
+        credentials {
+            username "aksalj"
+            password "2e8b2409f43dabec322ab59609b72a4b621a0e50"
+        }
+    }
+}
+
+
+dependencies {
+
+    compile "org.slf4j:slf4j-simple:1.7.21"
+    compile "com.sparkjava:spark-core:2.5.4"
+    compile "com.sparkjava:spark-template-handlebars:2.3"
+    compile "com.google.code.gson:gson:2.8.0"
+
+    compile project(":core")
+//    compile "com.africastalking:core:1.0.0:"
+
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}

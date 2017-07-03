@@ -1,0 +1,67 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.3'
+    }
+}
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+
+    lintOptions {
+        abortOnError false
+    }
+
+    defaultConfig {
+        applicationId "com.africastalking.example"
+        minSdkVersion 19
+        targetSdkVersion 25
+        versionCode 1
+        versionName rootProject.version
+
+        buildConfigField 'String', 'USERNAME', "\"at2fa\""
+        buildConfigField 'String', 'API_KEY', "\"8c940cd77db666ca100e9dd0d784191ada2ee3eaa1d0a952170a68595313f4ab\""
+        buildConfigField 'String', 'PAYMENT_PRODUCT', "\"TestProduct\""
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+
+repositories {
+    maven {
+        url  "http://dl.bintray.com/africastalking/java"
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:design:25.1.0'
+    compile 'com.jraska:console:0.4.3'
+    compile 'com.jraska:console-timber-tree:0.4.3'
+
+//    // TODO: Should be able to do
+//    compile project(":core")
+//    // TODO: or choose one or more libs
+//    compile project(":sms")
+//    compile project(":account")
+//    compile project(":payments")
+
+    // TODO: Should be able to do
+    compile "com.africastalking:core:1.1.1"
+    // TODO: or choose one or more libs
+    //compile "com.africastalking:sms:1.1.0"
+    //compile "com.africastalking:account:1.1.0"
+}
